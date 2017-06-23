@@ -4,22 +4,25 @@
 var pkg = require('../package.json');
 var program = require('commander');
 var args = process.argv.slice(2);
-var path;
+var projectSeedPath,
+    projectName;
 
 program
     .version(pkg.version)
-    .usage('[options] <path>')
+    .usage('[options] <project-name> <project-seed-path>')
     .option('-l, --local', 'Copy from local')
     .parse(process.argv);
 
-if (program.args.length !== 1) {
+if (program.args.length > 2) {
     program.help();
 }
 
-if (args.length > 1) {
-    program.help();
+if (program.args[0]){
+    projectName = program.args[0];
 }
 
-path = program.args[0];
+if (program.args[1]){
+    projectSeedPath = program.args[1];
+}
 
-require('../index')(path,program.local);
+require('../index')(projectName, projectSeedPath, program.local);
