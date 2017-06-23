@@ -35,6 +35,7 @@ module.exports = {
         'camelcase': 0,
         'key-spacing': 0,
         'padded-blocks': 0,
-        'no-console': 2
+        'no-console': 2,
+        'no-empty': 0
     }
 };
