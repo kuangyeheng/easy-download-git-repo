@@ -1,14 +1,14 @@
 {
   "name": "easy-download-git-repo",
   "version": "1.0.0",
-  "description": "download git repos to local",
+  "description": "Download git repo to local",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kuangyeheng/easy-download-git-repo.git"
+    "url": "git+ssh://git@github.com/kuangyeheng/easy-download-git-repo.git"
   },
   "author": "kuangyeheng",
   "license": "MIT",
