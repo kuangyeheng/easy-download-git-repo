@@ -4,6 +4,7 @@
 var inquirer = require('inquirer');
 var chalk = require('chalk');
 var program = require('commander');
+var run = require('../index.js');
 
 
 var pkg = require('../package.json');
@@ -86,9 +87,8 @@ var createQuestion = function  () {
 
 if (!(projectName && projectSeedPath)) {
     inquirer.prompt(createQuestion()).then(function (ans) {
-        console.log(1111111111);
         console.log(ans);
     });
+}else{
+    run(projectName, projectSeedPath, program.local);
 }
-
-require('../index')(projectName, projectSeedPath, program.local);
