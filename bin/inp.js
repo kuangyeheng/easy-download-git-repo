@@ -101,8 +101,16 @@ var createQuestion = function  () {
 
 if (!(projectName && projectSeedPath)) {
     inquirer.prompt(createQuestion()).then(function (ans) {
-        console.log(11111111111111111);
-        console.log(ans);
+        if (ans.type === 'projectName') {
+            run(projectName, ans.projectSeedPath, program.local);
+            return;
+        }
+        if (ans.type === 'projectSeedPath') {
+            run(ans.projectName, projectSeedPath, program.local);
+            return;
+        }
+    
+        run(ans.projectName, ans.projectSeedPath, program.local);
     });
 }else{
     run(projectName, projectSeedPath, program.local);
