@@ -61,7 +61,7 @@ var createQuestion = function  () {
         {
             type: 'input',
             name: 'projectName',
-            message: 'Please,input your '+chalk.yellow.bold('project name')+':',
+            message: 'Please,input your '+chalk.green.bold('project name')+':',
             when: function (ans) {
                 if (projectName && projectSeedPath) {
                     return false;
@@ -73,7 +73,7 @@ var createQuestion = function  () {
         {
             type: 'input',
             name: 'projectSeedPath',
-            message: 'Please,input your '+chalk.green.bold('project-seed path')+':',
+            message: 'Please,input your '+chalk.yellow.bold('project-seed path')+':',
             when: function (ans) {
                 if (projectName && projectSeedPath) {
                     return false;
