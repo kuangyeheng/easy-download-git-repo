@@ -15,6 +15,7 @@ program
     .version(pkg.version)
     .usage('[options] <project-name> <project-seed-path>')
     .option('-l, --local', 'Copy from local')
+    .option('-c, --clone', 'Use git clone')
     .parse(process.argv);
 
 if (program.args.length > 2) {
@@ -115,8 +116,8 @@ if (!(projectName && projectSeedPath)) {
             projectSeedPath = ans.projectSeedPath;
         }
     
-        run(projectName.trim(), projectSeedPath.trim(), program.local);
+        run(projectName.trim(), projectSeedPath.trim(), program.local,program.clone);
     });
 }else{
-    run(projectName.trim(), projectSeedPath.trim(), program.local);
+    run(projectName.trim(), projectSeedPath.trim(), program.local,program.clone);
 }
