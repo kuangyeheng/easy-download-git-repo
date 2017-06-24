@@ -31,11 +31,11 @@ if (program.args.length > 2) {
 }
 
 if (program.args[0]) {
-    projectName = program.args[0];
+    projectSeedPath = program.args[0];
 }
 
 if (program.args[1]) {
-    projectSeedPath = program.args[1];
+    projectName = program.args[1];
 }
 
 
