@@ -68,6 +68,13 @@ var createQuestion = function  () {
                 }
                 
                 return (ans.type === 'projectSeedPath') || (ans.type === undefined);
+            },
+            validate: function (input) {
+                if (input.trim() === '') {
+                    return 'Input should not be empty!'
+                }
+                
+                return true;
             }
         },
         {
@@ -80,6 +87,13 @@ var createQuestion = function  () {
                 }
                 
                 return (ans.type === 'projectName') || (ans.type === undefined);
+            },
+            validate: function (input) {
+                if (input.trim() === '') {
+                    return 'Input should not be empty!'
+                }
+    
+                return true;
             }
         }
     ]
@@ -87,6 +101,7 @@ var createQuestion = function  () {
 
 if (!(projectName && projectSeedPath)) {
     inquirer.prompt(createQuestion()).then(function (ans) {
+        console.log(11111111111111111);
         console.log(ans);
     });
 }else{
