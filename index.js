@@ -27,6 +27,10 @@ module.exports = function (projectName, projectSeedPath, isFromLocal, clone) {
     
     if (isFromLocal) {
         shell.cp('-R', path.resolve(projectSeedPath), projectName);
+        if (exists(proNameAbsPath)) {
+            shell.rm('-rf',path.join(proNameAbsPath,'/.git'));
+            shell.rm('-rf',path.join(proNameAbsPath,'/.svn'));
+        }
         proInitDone();
         return;
     }
