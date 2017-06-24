@@ -102,16 +102,16 @@ var createQuestion = function  () {
 if (!(projectName && projectSeedPath)) {
     inquirer.prompt(createQuestion()).then(function (ans) {
         if (ans.type === 'projectName') {
-            run(projectName, ans.projectSeedPath, program.local);
+            run(projectName.trim(), ans.projectSeedPath.trim(), program.local);
             return;
         }
         if (ans.type === 'projectSeedPath') {
-            run(ans.projectName, projectSeedPath, program.local);
+            run(ans.projectName.trim(), projectSeedPath.trim(), program.local);
             return;
         }
     
-        run(ans.projectName, ans.projectSeedPath, program.local);
+        run(ans.projectName.trim(), ans.projectSeedPath.trim(), program.local);
     });
 }else{
-    run(projectName, projectSeedPath, program.local);
+    run(projectName.trim(), projectSeedPath.trim(), program.local);
 }
