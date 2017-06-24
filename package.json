@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release-patch": "npm version patch -m 'release-patch' && git push && git push --tag && npm publish"
+    "release-patch": "npm version patch -m 'release-patch' && git push && git push --tag && npm publish",
+    "release-minor": "npm version minor -m 'release-minor' && git push && git push --tag && npm publish",
+    "release-major": "npm version major -m 'release-major' && git push && git push --tag && npm publish"
   },
   "repository": {
     "type": "git",
