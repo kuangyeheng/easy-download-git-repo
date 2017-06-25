@@ -15,7 +15,7 @@ var projectSeedPath = undefined,
 console.log('*********************************** ' + chalk.red.bold('Attention') + ' ***********************************');
 console.log('* ' + chalk.yellow.bold('Tips:') + ' url split by "' + chalk.red.bold(':') + '"' + '                                                        *');
 console.log('* ' + 'For example:' + '                                                                  *');
-console.log('* ' + chalk.green.bold('https://mygitlab.com') + chalk.red.bold(':') + chalk.cyan('flipxfx/download-git-repo-fixture') + chalk.yellow('#my-branch') + '              *');
+console.log('* ' + chalk.green.bold('https://mygitlab.com') + chalk.red.bold(':') + chalk.cyan('kuangyeheng/my-project') + chalk.yellow('#master') + '                            *');
 console.log('*********************************************************************************\n');
 /* eslint-enable no-console */
 
