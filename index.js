@@ -6,24 +6,19 @@ var path = require('path');
 var fs = require('fs');
 var exists = fs.existsSync;
 var shell = require('shelljs');
+var inquirer = require('inquirer');
 
 var proInitDone = function () {
     console.log('Project init '+chalk.green.bold('done')+'!');
 };
 
-module.exports = function (projectName, projectSeedPath, isFromLocal, clone) {
+var next = function (projectName, projectSeedPath, isFromLocal, clone) {
     console.log(chalk.green('projectName') + ':', chalk.green.bold(projectName) + '\n');
     console.log(chalk.yellow('projectSeedPath') + ':', chalk.yellow.bold(projectSeedPath) + '\n');
     console.log(chalk.cyan('isFromLocal') + ':', chalk.cyan.bold(!!isFromLocal) + '\n');
     console.log(chalk.cyan('clone') + ':', chalk.cyan.bold(!!clone) + '\n');
     
     var proNameAbsPath = path.resolve(projectName);
-    
-    if (exists(proNameAbsPath)) {
-        var err = new Error(chalk.green.bold(projectName) + ' has exists!');
-        console.log(err);
-        return;
-    }
     
     if (isFromLocal) {
         shell.cp('-R', path.resolve(projectSeedPath), projectName);
@@ -46,4 +41,46 @@ module.exports = function (projectName, projectSeedPath, isFromLocal, clone) {
         }
         proInitDone();
     });
+};
+
+module.exports = function (projectName, projectSeedPath, isFromLocal, clone) {
+    var proNameAbsPath = path.resolve(projectName);
+    
+    if (exists(proNameAbsPath)) {
+        inquirer.prompt([
+            {
+                type: 'confirm',
+                name: 'deleteProject',
+                message: 'Do you want to delete project ' + chalk.green.bold(projectName) + ' (just hit enter for ' + chalk.yellow.bold('NO') + ')?',
+                default: false
+            },
+            {
+                type: 'input',
+                name: 'projectName',
+                message: 'Please,input different ' + chalk.green.bold('project name') + ':',
+                when: function (ans) {
+                    return !ans.deleteProject;
+                },
+                validate: function (input) {
+                    if (input.trim() === '') {
+                        return 'Input should not be empty!'
+                    }
+                    
+                    if (input.trim() === projectName) {
+                        return 'Input should be different!'
+                    }
+            
+                    return true;
+                }
+            }
+        ]).then(function  (ans) {
+            if (ans.deleteProject) {
+                shell.rm('-rf', proNameAbsPath);
+                next(projectName, projectSeedPath, isFromLocal, clone);
+            }else{
+                projectName = ans.projectName;  // new projectName
+                next(projectName, projectSeedPath, isFromLocal, clone);
+            }
+        });
+    }
 };
