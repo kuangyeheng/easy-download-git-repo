@@ -35,6 +35,10 @@ module.exports = function (projectName, projectSeedPath, isFromLocal, clone) {
         return;
     }
     
+    if (/^https?:\/\//i.test(projectSeedPath)) {
+        projectSeedPath = projectSeedPath.replace(/\.git$/i,'');
+    }
+    
     downloadGitRepo(projectSeedPath, projectName, {clone: clone}, function (err) {
         if (err) {
             console.log(err);
