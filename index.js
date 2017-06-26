@@ -47,11 +47,12 @@ module.exports = function (projectName, projectSeedPath, isFromLocal, clone) {
     var proNameAbsPath = path.resolve(projectName);
     
     if (exists(proNameAbsPath)) {
+        console.log(chalk.white.bold('Tips: ') + chalk.green.bold(projectName) + chalk.white.bold(' has ') + chalk.red.bold('exists') + chalk.white.bold('!'));
         inquirer.prompt([
             {
                 type: 'confirm',
                 name: 'deleteProject',
-                message: 'Do you want to delete project ' + chalk.green.bold(projectName) + ' (just hit enter for ' + chalk.yellow.bold('NO') + ')?',
+                message: 'Do you want to delete project ' + chalk.green.bold(projectName) + chalk.white.bold(' (just hit enter for ') + chalk.yellow.bold('NO') + chalk.white.bold(')?'),
                 default: false
             },
             {
