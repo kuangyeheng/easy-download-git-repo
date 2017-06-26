@@ -88,4 +88,5 @@ module.exports = function (projectName, projectSeedPath, isFromLocal, clone) {
             }
         });
     }
+    next(projectName, projectSeedPath, isFromLocal, clone);
 };
