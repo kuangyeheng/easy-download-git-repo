@@ -70,6 +70,10 @@ module.exports = function (projectName, projectSeedPath, isFromLocal, clone) {
                     if (input.trim() === projectName) {
                         return 'Input should be different!'
                     }
+                    
+                    if (exists(path.resolve(input.trim()))) {
+                        return input + ' is exists too!'
+                    }
             
                     return true;
                 }
