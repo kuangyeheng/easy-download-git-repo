@@ -1,6 +1,6 @@
 {
   "name": "easy-download-git-repo",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Download git repo to local",
   "main": "index.js",
   "bin": {
